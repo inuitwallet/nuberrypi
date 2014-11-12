@@ -12,7 +12,7 @@
 #   https://github.com/nning/linux-grsec-lts
 #
 #####################################################
-# Modified by Peerchemist to use with Peerbox project
+# Modified by Peerchemist to use with NuBerryPi project
 #####################################################
 
 pkgname=linux-grsec-lts

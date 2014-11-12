@@ -1,4 +1,4 @@
-_user_name="ppcoind"
+_user_name="nud"
 _user_home="/var/lib/$_user_name"
 
 chown_conf() {
@@ -23,10 +23,10 @@ pre_install() {
 
 post_install() {
  chown_conf
- systemd-tmpfiles --create ppcoind.conf
+ systemd-tmpfiles --create nud.conf
 }
 
 post_upgrade() {
  chown_conf
- systemd-tmpfiles --create ppcoind.conf
+ systemd-tmpfiles --create nud.conf
 }

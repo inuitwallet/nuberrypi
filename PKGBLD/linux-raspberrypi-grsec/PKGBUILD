@@ -5,7 +5,7 @@ pkgbase=linux-raspberrypi-grsec
 _branch=rpi-3.14.y
 _srcname=linux-$_branch
 _kernelname=${pkgbase#linux}
-_desc="Peerbox"
+_desc="NuBerryPi"
 _grsec_patch="grsecurity-3.0-3.14.6-rpi-201406301600.patch"
 
 arch=('armv6h')

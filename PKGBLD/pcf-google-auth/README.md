@@ -1,11 +1,11 @@
 # pcf-modules-gauth
 
-# Use google-authenticator for 2-factor-authentication for Peerbox
+# Use google-authenticator for 2-factor-authentication for NuBerryPi
 
 [Google-authenticator](http://en.wikipedia.org/wiki/Google_Authenticator) is most popular 2FA implementation in existance, used by many online services. 
 You might know it from crypto-currency exchanges where it is de-facto standard security feature.
 
-Now you can use it to add extra security to your Peerbox installation.
+Now you can use it to add extra security to your NuBerryPi installation.
 
 To install it, use following command:
 
@@ -28,5 +28,5 @@ However you will most likely want to use this on your mobile device so just clic
 
 That is it, google-authenticator is now configured.
 
-Now try to log into your Peerbox via SSH.
+Now try to log into your NuBerryPi via SSH.
 As usual you will be prompted for your user password, but after it you will be prompted for your authentication code.

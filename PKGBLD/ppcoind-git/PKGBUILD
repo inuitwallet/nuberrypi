@@ -1,17 +1,17 @@
 
-pkgname='ppcoind'
+pkgname='nud'
 pkgver=v0.4.0ppc.r4.g5ace24f
 pkgrel=12
 pkgdesc='Official CLI implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin.'
 url='http://peercoin.net/'
 license=('MIT')
-install='ppcoind.install'
-source=($pkgname'::git+https://github.com/ppcoin/ppcoin.git'
-        'ppcoind.service'
+install='nud.install'
+source=($pkgname'::git+https://github.com/nu/nu.git'
+        'nud.service'
         'peercoin.conf'
-        'ppcoind.conf'
-        'ppcoind.tmpfiles'
-        'ppcoin-skel')
+        'nud.conf'
+        'nud.tmpfiles'
+        'nu-skel')
 
 sha256sums=('SKIP'
             '9eedec3cbc19718cd5428002a55e4ecb83fd5c85fd2c6cbe9bdab8304a1a7808'
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 arch=('armv6h' 'i686' 'x86_64')
 makedepends=('boost' 'miniupnpc')
 depends=('boost-libs' 'miniupnpc' 'openssl')
-optdepends=('ppcoind-blockchain')
+optdepends=('nud-blockchain')
 
 pkgver() {
  cd "$srcdir/$pkgname"
@@ -33,18 +33,18 @@ pkgver() {
 build() {
  cd "$srcdir/$pkgname"
  
- # make ppcoind
+ # make nud
  make -f makefile.unix USE_UPNP=1 USE_SSL=1 -C src CXXFLAGS="$CXXFLAGS"
  
 }
 
 package() {
  cd "$srcdir"
- install -Dm755 "$pkgname/src/ppcoind" "$pkgdir/usr/bin/ppcoind"
+ install -Dm755 "$pkgname/src/nud" "$pkgdir/usr/bin/nud"
  install -Dm640 "peercoin.conf" "$pkgdir/etc/peercoin/peercoin.conf"
- install -Dm640 "ppcoind.conf" "$pkgdir/etc/conf.d/ppcoind.conf"
- install -Dm640 "ppcoin-skel" "$pkgdir/etc/skel/.ppcoin"
- install -Dm644 "ppcoind.service" "$pkgdir/usr/lib/systemd/system/ppcoind.service"
- install -Dm644 "ppcoind.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/ppcoind.conf"
- install -Dm644 "$pkgname/COPYING" "$pkgdir/usr/share/licenses/ppcoind/COPYING"
+ install -Dm640 "nud.conf" "$pkgdir/etc/conf.d/nud.conf"
+ install -Dm640 "nu-skel" "$pkgdir/etc/skel/.nu"
+ install -Dm644 "nud.service" "$pkgdir/usr/lib/systemd/system/nud.service"
+ install -Dm644 "nud.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/nud.conf"
+ install -Dm644 "$pkgname/COPYING" "$pkgdir/usr/share/licenses/nud/COPYING"
 }

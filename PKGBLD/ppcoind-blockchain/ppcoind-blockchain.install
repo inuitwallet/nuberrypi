@@ -1,14 +1,14 @@
 
 chown_files() {
- chown ppcoind:ppcoind /var/lib/ppcoind/blk0001.dat
+ chown nud:nud /var/lib/nud/blk0001.dat
 }
 
 pre_install() {
 	echo
 	echo "==> WARNING!!!"
-	echo "==> before you continue stop the ppcoind"
+	echo "==> before you continue stop the nud"
 	echo 
-	echo "==> sudo systemctl stop ppcoind <=="
+	echo "==> sudo systemctl stop nud <=="
 	echo
 	echo "==> thank you."
 }
@@ -16,8 +16,8 @@ pre_install() {
 post_install() {
  chown_files
  echo 
- echo "After installation is complete restart the ppcoind"
- echo "===> sudo systemctl start ppcoind"
+ echo "After installation is complete restart the nud"
+ echo "===> sudo systemctl start nud"
  echo
 
 }
@@ -25,7 +25,7 @@ post_install() {
 post_upgrade() {
  chown_files
  echo 
- echo "After installation is complete restart the ppcoind"
- echo "===> sudo systemctl start ppcoind"
+ echo "After installation is complete restart the nud"
+ echo "===> sudo systemctl start nud"
  echo
 }

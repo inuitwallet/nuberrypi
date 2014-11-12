@@ -1,10 +1,9 @@
-NAME="Peerbox on Arch Linux ARM"
-ID=peerbox
-ID_LIKE=peerbox
+NAME="NuBerryPi on Arch Linux ARM"
+ID=nuberrypi
+ID_LIKE=nuberrypi
 VERSION_ID="0.23"
-PRETTY_NAME="Peerbox"
+PRETTY_NAME="NuBerryPi"
 ANSI_COLOR="0;36"
-HOME_URL="http://www.peerbox.me/"
-SUPPORT_URL="http://www.peercointalk.org/index.php?topic=2932.0"
-BUG_REPORT_URL="https://github.com/peerchemist/Peerbox"
+HOME_URL="http://www.berrypi.nu/"
+SUPPORT_URL="http://discuss.nubbits.com"
 

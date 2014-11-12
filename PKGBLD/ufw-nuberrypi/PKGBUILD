@@ -1,9 +1,9 @@
 
-pkgname=ufw-peerbox
+pkgname=ufw-nuberrypi
 pkgver=0.33
 pkgrel=2
 pkgdesc="Uncomplicated and easy to use CLI tool for managing a netfilter firewall"
-provides=('ufw-peerbox')
+provides=('ufw-nuberrypi')
 arch=('any')
 url="https://launchpad.net/ufw"
 license=('GPL3')

@@ -1,14 +1,15 @@
-
-
- _____               _               
-|  __ \             | |              
-| |__) |__  ___ _ __| |__   _____  __
-|  ___/ _ \/ _ \ '__| '_ \ / _ \ \/ /
-| |  |  __/  __/ |  | |_) | (_) >  < 
-|_|   \___|\___|_|  |_.__/ \___/_/\_\
-                                     v0.23
+     __         ___                        ___ _
+  /\ \ \_   _  / __\ ___ _ __ _ __ _   _  / _ (_)
+ /  \/ / | | |/__\/// _ \ '__| '__| | | |/ /_)/ |
+/ /\  /| |_| / \/  \  __/ |  | |  | |_| / ___/| |
+\_\ \/  \__,_\_____/\___|_|  |_|   \__, \/    |_|
+                                   |___/
+                                             v0.1
                                       
-url: www.peerbox.me
-forum: http://www.peercointalk.org/index.php?&topic=2932.0
+A fork of the popular Peerbox project for Nu
+www.berrypi.nu
+
+Original project by Peerchemist
+www.peerbox.me
 git: https://github.com/peerchemist/Peerbox
 

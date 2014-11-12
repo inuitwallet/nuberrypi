@@ -1,30 +1,30 @@
-## peerbox-info
+## nuberrypi-info
 
-Peerbox-info is utily to display statistics on running Peerbox.
+NuBerryPi-info is utily to display statistics on running NuBerryPi.
 There are several modes of operation:
 
-> peerbox-info
+> nuberrypi-info
 
 will display general info.
 
-> peerbox-info -a or peerbox-info --all
+> nuberrypi-info -a or nuberrypi-info --all
 
 will display **all** information.
 
 (Avoid using this output for public showing as it contains some private information.)
 
-> peerbox-info --public
+> nuberrypi-info --public
 
 will show general information but will hide private data (ip, balance, serial number)
 This is great for showing on forums, etc.
 
-> peerbox-info -s or peerbox-info --system
+> nuberrypi-info -s or nuberrypi-info --system
 
 will display only system diagnostics.
 
 Example output:
 
-    Peerbox system info:
+    NuBerryPi system info:
     {
     "average load": [
         0.45, 
@@ -32,20 +32,20 @@ Example output:
         0.48
     ], 
     "kernel release": "3.14.6-3-GRSEC", 
-    "peerbox": "0.22", 
+    "nuberrypi": "0.22", 
     "system_temperature": 45.464, 
     "uptime": "22:23:25.540000"
     }
 
-> peerbox-info -p or peerbox-info --ppcoin
+> nuberrypi-info -p or nuberrypi-info --nu
 
-is equal to "ppcoind getinfo"
+is equal to "nud getinfo"
 
-> peerbox-info -o or peerbox-info --output
+> nuberrypi-info -o or nuberrypi-info --output
 
 will dump data to stdout. You can use this to pipe data to some other program.
 
-> peerbox-info --health
+> nuberrypi-info --health
 
 will run diagnostic on blockchain status. It uses peerchain.co as reference.
 It is worth to run this once in a while to check if you are on the right chain.

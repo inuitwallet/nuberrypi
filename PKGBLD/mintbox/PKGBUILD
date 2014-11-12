@@ -1,7 +1,7 @@
 pkgname=mintbox
 pkgver=0.11
 pkgrel=1
-pkgdesc="Small wrapper around ppcoind walletpassphrase"
+pkgdesc="Small wrapper around nud walletpassphrase"
 provides=('mintbox')
 makedepends=('python2')
 depends=('python2-sh' 'python2-colored')

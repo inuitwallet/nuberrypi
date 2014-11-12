@@ -62,7 +62,7 @@ iptables -A INPUT -p tcp -s 10.42.0.0/24 -m tcp --dport 22 -j ACCEPT
 #iptables -A INPUT -p tcp -s 10.42.0.0/24 --dport 873 -m state --state NEW,ESTABLISHED -j ACCEPT
 #}
 
-## Allow ppcoind {
+## Allow nud {
 iptables -A INPUT -p tcp --dport 9901 -j ACCEPT
 #}
 

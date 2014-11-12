@@ -1,1 +1,1 @@
-d /run/ppcoind 0755 ppcoind ppcoind -
+d /run/nud 0755 nud nud -

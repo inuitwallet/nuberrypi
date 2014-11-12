@@ -3,7 +3,7 @@
 #
 # Copyright 2014 Peerchemist
 #
-# This file is part of Peerbox project.
+# This file is part of NuBerryPi project ( a fork of the PeerBox project)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -58,7 +58,7 @@ class pbinfo:
 				return(float(temp.readline().strip())/1000)
 
 		mm = {
-			'peerbox': distr(),
+			'nuberrypi': distr(),
 			'kernel release': platform.release(),	
 			'uptime': uptime(),
 			'average load': os.getloadavg(),
@@ -95,17 +95,17 @@ class pbinfo:
 		return(mm)
 
 
-	def ppcoind(self, argv):
+	def nud(self, argv):
 
-		get = sh.ppcoind("getinfo", _ok_code=[0,3,5,87]).stdout
-		pos_diff = sh.ppcoind("getdifficulty", _ok_code=[0,3,5,87]).stdout
+		get = sh.nud("getinfo", _ok_code=[0,3,5,87]).stdout
+		pos_diff = sh.nud("getdifficulty", _ok_code=[0,3,5,87]).stdout
 
 		try:
 			getinfo = json.loads(get)
 			pos = json.loads(pos_diff)['proof-of-stake']
 			getinfo["difficulty proof-of-stake"] = pos
 		except:
-			return("ppcoind inactive")
+			return("nud inactive")
 
 		## When posting in public, hide IP and balance.
 		if argv == "private":
@@ -122,32 +122,32 @@ class box:
 	def default(self): ## printed when no arguments
 
 		box = {}
-		box['peerbox version'] = "v" + pbinfo.system()['peerbox']
+		box['nuberrypi version'] = "v" + pbinfo.system()['nuberrypi']
 		box['uptime'] = pbinfo.system()['uptime']
-		box['ppcoind'] = pbinfo.ppcoind(self)
+		box['nud'] = pbinfo.nud(self)
 		box['serial'] = pbinfo.hardware()['serial']
 		box['raspi_board_rev'] = pbinfo.hardware()['board_rev']
 
-		print(fore.GREEN + style.UNDERLINED + "Peerbox:" + style.RESET)
+		print(fore.GREEN + style.UNDERLINED + "NuBerryPi:" + style.RESET)
 		print(json.dumps(box, sort_keys=True, indent=4))
 
-		if box['ppcoind'] == "ppcoind inactive":
-			print(fore.RED + style.BOLD + "WARNING: ppcoind is not running!" + style.RESET)
+		if box['nud'] == "nud inactive":
+			print(fore.RED + style.BOLD + "WARNING: nud is not running!" + style.RESET)
 
 	def public(self): ## When privacy is needed
 
 		box = {}
-		box['Peerbox:'] = "v" + pbinfo.system()['peerbox']
+		box['NuBerryPi:'] = "v" + pbinfo.system()['nuberrypi']
 		box['serial'] = pbinfo.hardware()['serial']
 		box['uptime'] = pbinfo.system()['uptime']
-		box['ppcoind'] = pbinfo.ppcoind('private')
-		print(fore.GREEN + style.UNDERLINED + "Peerbox:" + style.RESET)
+		box['nud'] = pbinfo.nud('private')
+		print(fore.GREEN + style.UNDERLINED + "NuBerryPi:" + style.RESET)
 		print(json.dumps(box, sort_keys=True, indent=4))		
 
 	def system(self):
 
 		box = pbinfo.system()
-		print(fore.GREEN + style.UNDERLINED + "Peerbox system info:" + style.RESET)
+		print(fore.GREEN + style.UNDERLINED + "NuBerryPi system info:" + style.RESET)
 		print(json.dumps(box, sort_keys=True, indent=4))
 
 		if box['system_temperature'] > 76:
@@ -158,7 +158,7 @@ class box:
 		box = {}
 		box['system'] = pbinfo.system()
 		box['system'].update(pbinfo.hardware())
-		box['ppcoind'] = pbinfo.ppcoind(self)
+		box['nud'] = pbinfo.nud(self)
 		print(json.dumps(box, sort_keys=True, indent=4))
 
 	def health(self):
@@ -188,12 +188,12 @@ class health:
 	def local(self):
 		
 		local = {}
-		local["heightInt"] = int(sh.ppcoind("getblockcount", _ok_code=[0,3,5,87]).stdout)
+		local["heightInt"] = int(sh.nud("getblockcount", _ok_code=[0,3,5,87]).stdout)
 
-		local["hash"] = sh.ppcoind("getblockhash", local["heightInt"],
+		local["hash"] = sh.nud("getblockhash", local["heightInt"],
 												_ok_code=[0,3,5,87]).stdout.strip()
 
-		block_info = json.loads(sh.ppcoind("getblock", local["hash"],
+		block_info = json.loads(sh.nud("getblock", local["hash"],
 												_ok_code=[0,3,5,87]).stdout)
 
 		local["prevHash"] = block_info["previousblockhash"]
@@ -240,10 +240,10 @@ health = health()
 
 ######################### args
 
-parser = argparse.ArgumentParser(description='Show information on Peerbox')
+parser = argparse.ArgumentParser(description='Show information on NuBerryPi')
 parser.add_argument('-a', '--all', help='show everything', action='store_true')
 parser.add_argument('-s','--system', help='show system information', action='store_true')
-parser.add_argument('-p', '--ppcoin', help='equal to "ppcoid getinfo"', action='store_true')
+parser.add_argument('-p', '--nu', help='equal to "ppcoid getinfo"', action='store_true')
 parser.add_argument('--public', help='hide private data [ip, balance, serial]', action='store_true')
 parser.add_argument('-o', '--output', help='dump data to stdout, use to pipe to some other program', 
 																		action='store_true')
@@ -261,8 +261,8 @@ if args.all:
 if args.system:
 	box.system()
 
-if args.ppcoin:
-	print(json.dumps(pbinfo.ppcoind("self"), indent=4, sort_keys=True))
+if args.nu:
+	print(json.dumps(pbinfo.nud("self"), indent=4, sort_keys=True))
 
 if args.public:
 	box.public()
